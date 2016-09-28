@@ -1,27 +1,33 @@
-### docker-oraclejava
+# docker-oraclejava
 
-This repository contains a Dockerfile which builds an Oracle Java container image.
+[![](https://images.microbadger.com/badges/version/isim/oraclejava.svg)](https://microbadger.com/images/isim/oraclejava "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/isim/oraclejava.svg)](https://microbadger.com/images/isim/oraclejava "Get your own image badge on microbadger.com")
 
-This Dockerfile will:
+[![Follow me on Twitter][1.1]][1] [![Check out My GitHub Repos][6.1]][6]
 
-1. Add the WebUpd PPA repository.
-2. Download the Oracle Java installer from the repository.
-3. Accept the [Oracle Binary Code License Agreement](http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
-4. Install the Oracle Java binary.
+docker-oraclejava contains a Dockerfile to build an Oracle Java container image.
 
-### Tags
-
-* [`1.7.0_80_trusty`, `latest`](https://github.com/ihcsim/docker-oraclejava/tree/1.7.0_80_trusty): Oracle Java 1.7.0_80 with Ubuntu Trusty
+## Tags
+* [`1.8.0_101`, `latest`](https://github.com/ihcsim/docker-oraclejava/tree/1.8.0_60): [![](https://images.microbadger.com/badges/commit/isim/oraclejava.svg)](https://microbadger.com/images/isim/oraclejava "Get your own commit badge on microbadger.com")
+* [`1.7.0_80_trusty`](https://github.com/ihcsim/docker-oraclejava/tree/1.7.0_80_trusty): Oracle Java 1.7.0_80 with Ubuntu Trusty
 * [`1.8.0_60`](https://github.com/ihcsim/docker-oraclejava/tree/1.8.0_60): Oracle Java 1.8.0_60
 * [`1.7.0_80`](https://github.com/ihcsim/docker-oraclejava/tree/1.7.0_80): Oracle Java 1.7.0_80
 
-### Base Image
+## How To Use
 
-* [ubuntu:trusty](https://github.com/tianon/docker-brew-ubuntu-core/blob/3852ef7c7e841ea8c126c9b00e64eeca61fe5ab0/trusty/Dockerfile)
+To run Java:
+```
+$ docker run --rm isim/oraclejava -version
+$ docker run --rm isim/oraclejava MyClass
+```
 
-### Usage
+To run other JDK tools:
+```
+$ docker run --rm --entrypoint=ls isim/oraclejava $JAVA_HOME/bin
+$ docker run --rm --entrypoint=<jdk-tool> isim/oraclejava -version
+$ docker run --rm --entrypoint=<jdk-tool> isim/oraclejava <arguments...>
+```
 
-* To pull from dockerhub: `docker pull isim/oraclejava`
-* To build: `docker build --rm -t isim/oraclejava .`
-* To run Java: `docker run -it --rm isim/oraclejava java`
-* To run Javac: `docker run -it --rm isim/oraclejava javac`
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
+[1]: https://twitter.com/IvanHCSim
+[6.1]: http://i.imgur.com/0o48UoR.pngi (github icon with padding)
+[6]: https://github.com/ihcsim
