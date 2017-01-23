@@ -1,6 +1,10 @@
 FROM ubuntu:16.04
 MAINTAINER Ivan Sim, ihcsim@gmail.com
 
+ARG VCS_REF
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/ihcsim/docker-oraclejava"
+
 RUN apt-get update && \
     apt-get install -y software-properties-common python-software-properties && \
     add-apt-repository ppa:webupd8team/java && \
@@ -11,15 +15,4 @@ RUN apt-get update && \
     rm -rf /var/cache/oracle-jdk8-installer
 ENV JAVA_HOME="/usr/lib/jvm/java-8-oracle/"
 
-ENTRYPOINT ["java"]
-CMD ["-version"]
-
-# Build-time metadata as defined at http://label-schema.org
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Oracle Java" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/ihcsim/docker-oraclejava" \
-      org.label-schema.version=$VERSION
+CMD ["java"]
